@@ -41,6 +41,12 @@
 </div>
 
 
-<app-message-bar [type]="messageType" [buttons]="buttons()" [hasCloseButton]="hasCloseButton" (closeClicked)="console.log('Close clicked!')" (primaryButtonClicked)="console.log('Primary button clicked!')" (secondaryButtonClicked)="console.log('Secondary button clicked!')">
+<app-message-bar 
+      [type]="messageType"
+      [buttons]="buttons()"
+      [hasCloseButton]="hasCloseButton"
+      (closeClicked)="console.log('Close clicked!')"
+      (primaryButtonClicked)="console.log('Primary button clicked!')"
+      (secondaryButtonClicked)="console.log('Secondary button clicked!')">
   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et <a href="#">dolore magna aliqua</a>. Quisque gravida diam sit amet nisl suscipit.
 </app-message-bar>
