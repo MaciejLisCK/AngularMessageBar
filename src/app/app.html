@@ -11,14 +11,29 @@
 </div>
 
 <div>
-  Buttons position:
-  <select [(ngModel)]="buttonsPosition">
-    <option [ngValue]="MessageBarButtonsPosition.None">None</option>
-    <option [ngValue]="MessageBarButtonsPosition.Right">Right</option>
-    <option [ngValue]="MessageBarButtonsPosition.Bottom">Bottom</option>
-  </select>
+  Has buttons:
+  <input type="checkbox" [(ngModel)]="hasButtons" />
 </div>
 
+@if (hasButtons()) {
+  <div>
+    Buttons position:
+    <select [(ngModel)]="buttonsPosition">
+      <option [ngValue]="MessageBarButtonsPosition.Right">Right</option>
+      <option [ngValue]="MessageBarButtonsPosition.Bottom">Bottom</option>
+    </select>
+  </div>
+  
+  <div>
+    Primary button text: 
+    <input type="text" [(ngModel)]="primaryButtonText" />
+  </div>
+  
+  <div>
+    Secondary button text: 
+    <input type="text" [(ngModel)]="secondaryButtonText" />
+  </div>
+}
 
 <div>
   Has close button:
@@ -26,6 +41,6 @@
 </div>
 
 
-<app-message-bar [type]="messageType" [buttonsPosition]="buttonsPosition" [hasCloseButton]="hasCloseButton" (closeClicked)="console.log('Close clicked!')">
+<app-message-bar [type]="messageType" [buttons]="buttons()" [hasCloseButton]="hasCloseButton" (closeClicked)="console.log('Close clicked!')" (primaryButtonClicked)="console.log('Primary button clicked!')" (secondaryButtonClicked)="console.log('Secondary button clicked!')">
   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et <a href="#">dolore magna aliqua</a>. Quisque gravida diam sit amet nisl suscipit.
 </app-message-bar>

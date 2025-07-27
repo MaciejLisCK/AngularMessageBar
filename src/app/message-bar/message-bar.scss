@@ -85,6 +85,10 @@ $color-red-very-dark: #{color.adjust($color-red-dark, $lightness: -30%)};
         display: flex;
         gap: 8px;
 
+        &.buttons-position-bottom{
+            flex-direction: column;
+        }
+
         .buttons {
             display: flex;
             gap: 12px;

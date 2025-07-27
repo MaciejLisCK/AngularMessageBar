@@ -1,12 +1,7 @@
 import { Component, computed, input, output } from '@angular/core';
-import { MessageBarButtonsPosition } from '../app';
-
-export enum MessageBarType {
-  Information,
-  Success,
-  Warning,
-  Error,
-}
+import { MessageBarType } from './model/message-bar-type';
+import { MessageBarButtons } from './model/message-bar-buttons';
+import { MessageBarButtonsPosition } from './model/message-bar-buttons-position';
 
 @Component({
   selector: 'app-message-bar',
@@ -23,7 +18,7 @@ export enum MessageBarType {
 })
 export class MessageBar {
   type = input<MessageBarType>()
-  buttonsPosition = input<MessageBarButtonsPosition>(MessageBarButtonsPosition.None)
+  buttons = input<MessageBarButtons>()
   hasCloseButton = input<boolean>(true)
   primaryButtonClicked = output<void>()
   secondaryButtonClicked = output<void>();
@@ -34,5 +29,9 @@ export class MessageBar {
   isWarningType = computed(() => this.type() === MessageBarType.Warning)
   isErrorType = computed(() => this.type() === MessageBarType.Error)
   
+  primaryButtonText = computed(() => this.buttons()?.buttons[0]?.text)
+  secondaryButtonText = computed(() => this.buttons()?.buttons[1]?.text)
+  buttonsPositionBottom = computed(() => this.buttons()?.position === MessageBarButtonsPosition.Bottom)
+
   MessageBarButtonsPosition = MessageBarButtonsPosition;
 }

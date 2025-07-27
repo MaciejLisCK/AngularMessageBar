@@ -1,12 +1,12 @@
-<div class="content-wrapper">
+<div class="content-wrapper" [class.buttons-position-bottom]="buttonsPositionBottom()">
     <div class="content">
         <ng-content />
     </div>
 
-    @if (buttonsPosition() !== MessageBarButtonsPosition.None) {
+    @if (buttons()) {
         <div class="buttons">
-            <button class="btn btn-primary" (click)="primaryButtonClicked.emit()" type="button">Primary</button>
-            <button class="btn btn-secondary" (click)="secondaryButtonClicked.emit()" type="button">Secondary</button>
+            <button class="btn btn-primary" (click)="primaryButtonClicked.emit()" type="button">{{ primaryButtonText() }}</button>
+            <button class="btn btn-secondary" (click)="secondaryButtonClicked.emit()" type="button">{{ secondaryButtonText() }}</button>
         </div>
     }
 </div>
