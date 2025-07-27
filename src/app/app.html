@@ -1,14 +1,31 @@
 <router-outlet />
 
-<app-message-bar [type]="MessageBarType.Information">
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et <a href="#">dolore magna aliqua</a>. Quisque gravida diam sit amet nisl suscipit.
-</app-message-bar>
-<app-message-bar [type]="MessageBarType.Success">
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et <a href="#">dolore magna aliqua</a>. Quisque gravida diam sit amet nisl suscipit.
-</app-message-bar>
-<app-message-bar [type]="MessageBarType.Warning">
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et <a href="#">dolore magna aliqua</a>. Quisque gravida diam sit amet nisl suscipit.
-</app-message-bar>
-<app-message-bar [type]="MessageBarType.Error">
+<div>
+  Type: 
+  <select [(ngModel)]="messageType">
+    <option [ngValue]="MessageBarType.Information">Information</option>
+    <option [ngValue]="MessageBarType.Success">Success</option>
+    <option [ngValue]="MessageBarType.Warning">Warning</option>
+    <option [ngValue]="MessageBarType.Error">Error</option>
+  </select>
+</div>
+
+<div>
+  Buttons position:
+  <select [(ngModel)]="buttonsPosition">
+    <option [ngValue]="MessageBarButtonsPosition.None">None</option>
+    <option [ngValue]="MessageBarButtonsPosition.Right">Right</option>
+    <option [ngValue]="MessageBarButtonsPosition.Bottom">Bottom</option>
+  </select>
+</div>
+
+
+<div>
+  Has close button:
+  <input type="checkbox" [(ngModel)]="hasCloseButton" />
+</div>
+
+
+<app-message-bar [type]="messageType" [buttonsPosition]="buttonsPosition" [hasCloseButton]="hasCloseButton" (closeClicked)="console.log('Close clicked!')">
   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et <a href="#">dolore magna aliqua</a>. Quisque gravida diam sit amet nisl suscipit.
 </app-message-bar>

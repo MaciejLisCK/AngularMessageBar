@@ -14,18 +14,20 @@ $color-red-dark: #DB2525;
 $color-red-very-dark: #{color.adjust($color-red-dark, $lightness: -30%)};
 
 :host {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+    display: block;
+    position: relative;
     padding: 16px 16px 16px 48px;
     border-left-width: 2px;
     border-left-style: solid;
-    
+
+    &.has-close-button {
+        padding-right: 48px;
+    }
 
     &.information {
-        --background-color: #{$color-blue-light};
-        --border-left-color: #{$color-blue-dark};
-        --text-color: #{$color-blue-very-dark};
+        --color-light: #{$color-blue-light};
+        --color-dark: #{$color-blue-dark};
+        --color-very-dark: #{$color-blue-very-dark};
         background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%230471F0" viewBox="0 0 16 16"><path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2"/></svg>');
 
         .close-button {
@@ -34,9 +36,9 @@ $color-red-very-dark: #{color.adjust($color-red-dark, $lightness: -30%)};
     }
 
     &.success {
-        --background-color: #{$color-green-light};
-        --border-left-color: #{$color-green-dark};
-        --text-color: #{$color-green-very-dark};
+        --color-light: #{$color-green-light};
+        --color-dark: #{$color-green-dark};
+        --color-very-dark: #{$color-green-very-dark};
         background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%2341BD56" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/></svg>');
 
         .close-button {
@@ -45,9 +47,9 @@ $color-red-very-dark: #{color.adjust($color-red-dark, $lightness: -30%)};
     }
 
     &.warning {
-        --background-color: #{$color-yellow-light};
-        --border-left-color: #{$color-yellow-dark};
-        --text-color: #{$color-yellow-very-dark};
+        --color-light: #{$color-yellow-light};
+        --color-dark: #{$color-yellow-dark};
+        --color-very-dark: #{$color-yellow-very-dark};
         background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%23DBA500" viewBox="0 0 16 16"><path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5m.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/></svg>');
 
         .close-button {
@@ -56,9 +58,9 @@ $color-red-very-dark: #{color.adjust($color-red-dark, $lightness: -30%)};
     }
 
     &.error {
-        --background-color: #{$color-red-light};
-        --border-left-color: #{$color-red-dark};
-        --text-color: #{$color-red-very-dark};
+        --color-light: #{$color-red-light};
+        --color-dark: #{$color-red-dark};
+        --color-very-dark: #{$color-red-very-dark};
         background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%23DB2525" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4m.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2"/></svg>');
 
         .close-button {
@@ -70,16 +72,29 @@ $color-red-very-dark: #{color.adjust($color-red-dark, $lightness: -30%)};
     &.success,
     &.warning,
     &.error {
-        background-color: var(--background-color);
-        border-left-color: var(--border-left-color);
-        color: var(--text-color);
+        background-color: var(--color-light);
+        border-left-color: var(--color-dark);
+        color: var(--color-very-dark);
 
         background-size: 20px 20px;
-        background-position: left 16px top 16px;
+        background-position: left 16px top 20px;
         background-repeat: no-repeat;
     }
 
+    .content-wrapper {
+        display: flex;
+        gap: 8px;
+
+        .buttons {
+            display: flex;
+            gap: 12px;
+        }
+    }
+
     .close-button {
+        position: absolute;
+        top: 16px;
+        right: 16px;
         width: 16px;
         height: 16px;
         cursor: pointer;

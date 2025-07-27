@@ -1,4 +1,5 @@
-import { Component, computed, HostBinding, input, output } from '@angular/core';
+import { Component, computed, input, output } from '@angular/core';
+import { MessageBarButtonsPosition } from '../app';
 
 export enum MessageBarType {
   Information,
@@ -17,15 +18,21 @@ export enum MessageBarType {
     '[class.success]': 'isSuccessType()',
     '[class.warning]': 'isWarningType()',
     '[class.error]': 'isErrorType()',
+    '[class.has-close-button]': 'hasCloseButton()',
   }
 })
 export class MessageBar {
   type = input<MessageBarType>()
+  buttonsPosition = input<MessageBarButtonsPosition>(MessageBarButtonsPosition.None)
   hasCloseButton = input<boolean>(true)
+  primaryButtonClicked = output<void>()
+  secondaryButtonClicked = output<void>();
   closeClicked = output<void>()
 
   isInformationType = computed(() => this.type() === MessageBarType.Information)
   isSuccessType = computed(() => this.type() === MessageBarType.Success)
   isWarningType = computed(() => this.type() === MessageBarType.Warning)
   isErrorType = computed(() => this.type() === MessageBarType.Error)
+  
+  MessageBarButtonsPosition = MessageBarButtonsPosition;
 }

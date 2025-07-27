@@ -1,5 +1,14 @@
-<div class="content">
-    <ng-content />
+<div class="content-wrapper">
+    <div class="content">
+        <ng-content />
+    </div>
+
+    @if (buttonsPosition() !== MessageBarButtonsPosition.None) {
+        <div class="buttons">
+            <button class="btn btn-primary" (click)="primaryButtonClicked.emit()" type="button">Primary</button>
+            <button class="btn btn-secondary" (click)="secondaryButtonClicked.emit()" type="button">Secondary</button>
+        </div>
+    }
 </div>
 
 @if (hasCloseButton()) {
