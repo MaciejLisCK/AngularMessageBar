@@ -1,0 +1,7 @@
+<div class="content">
+    <ng-content />
+</div>
+
+@if (hasCloseButton()) {
+  <button class="close-button" (click)="closeClicked.emit()" type="button"></button>
+}
