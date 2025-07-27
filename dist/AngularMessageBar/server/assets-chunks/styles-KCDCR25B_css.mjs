@@ -1,0 +1,2 @@
+export default `body{font-family:Lato,sans-serif;box-sizing:border-box}.btn{display:inline-block;height:32px;padding:8px;border-radius:4px;text-decoration:none;border:none;cursor:pointer}.btn.btn-primary{background-color:var(--color-dark);color:#fff}.btn.btn-secondary{background-color:transparent;border:1px solid var(--color-dark);color:var(--color-dark);font-weight:600}
+`;
